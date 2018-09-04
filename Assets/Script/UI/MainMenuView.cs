@@ -60,7 +60,8 @@ namespace MoleMole
         }
         public void GameStartCallBack()
         {
-            Application.LoadLevel("StartGame");
+            LoadingScreen.GlobLoadScenes.loadName = "StartGame";
+            Application.LoadLevel("LoadingScenes");
         }
         public void GameExitCallBack()
         {
