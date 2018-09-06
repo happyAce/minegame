@@ -15,8 +15,12 @@ public class LoadingScreen : MonoBehaviour {
     private float time;
     //异步对象
     AsyncOperation async;
-    
+    string secenes_path;
     int progress = 0;
+    private void Awake()
+    {
+        secenes_path = Application.dataPath + "/"+ GlobLoadScenes.loadName+".unity3d";
+    }
     void Start()
     {
         StartCoroutine(loadScene());
@@ -25,11 +29,19 @@ public class LoadingScreen : MonoBehaviour {
 
     IEnumerator loadScene()
     {
-        yield return new WaitForSeconds(3f);
-        async = Application.LoadLevelAsync(GlobLoadScenes.loadName);
-        yield return async;
+        WWW www = WWW.LoadFromCacheOrDownload(secenes_path, 1);
+       // WWW www = new WWW(secenes_path);
+        yield return www;
+
+        AssetBundle bundle = www.assetBundle;
+        Instantiate(bundle.mainAsset);
+        bundle.Unload(false);
+
+        //yield return new WaitForSeconds(3f);
+        // Application.LoadLevelAsync(GlobLoadScenes.loadName);
+        // yield return async;
     }
-   
+
     void OnGUI()
     {
         DrawTitle();

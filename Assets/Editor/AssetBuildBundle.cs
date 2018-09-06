@@ -60,16 +60,33 @@ public class AssetBuildBundle : Editor {
     {
         //清空一下缓存
         Caching.ClearCache();
-        string Path = Application.dataPath + "/MyScene.unity3d";
-        string[] levels = { "Assets/Scenes/LoadingScenes.unity" };
+       // string Path = Application.dataPath + "/MyScene.unity3d";
+       // string[] levels = { "Assets/Scenes/LoadingScenes.unity" };
         //打包场景
-       
-        if(BuildPipeline.BuildPlayer(levels, Path, BuildTarget.StandaloneWindows, BuildOptions.BuildAdditionalStreamedScenes))
-        {
 
-            Debug.Log("build场景成功");
-            AssetDatabase.Refresh();
+
+        Object[] SelectedAsset = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);
+        foreach (Object o in SelectedAsset)
+        {
+            //本地测试：建议最后将Assetbundle放在StreamingAssets文件夹下，如果没有就创建一个，因为移动平台下只能读取这个路径
+            //StreamingAssets是只读路径，不能写入
+            //服务器下载：就不需要放在这里，服务器上客户端用www类进行下载。
+            string targetpath = Application.dataPath + "/"+ o.name+".unity3d";
+            string[] levels = { "Assets/Scenes/"+ o.name + ".unity" };
+            if (BuildPipeline.BuildPlayer(levels, targetpath, BuildTarget.StandaloneWindows, BuildOptions.BuildAdditionalStreamedScenes))
+            {
+
+                Debug.Log("build场景成功:"+o.name+".unity3d");
+                AssetDatabase.Refresh();
+            }
         }
+
+        //if (BuildPipeline.BuildPlayer(levels, Path, BuildTarget.StandaloneWindows, BuildOptions.BuildAdditionalStreamedScenes))
+        //{
+
+        //    Debug.Log("build场景成功");
+        //    AssetDatabase.Refresh();
+        //}
         
     }
 
