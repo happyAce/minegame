@@ -8,7 +8,7 @@ public class LoadingScreen : MonoBehaviour {
     {
         //在这里记录当前切换场景的名称
         public static string loadName;
-
+        public static string beforeName;
     }
     string secenes_path;
     private void Awake()
