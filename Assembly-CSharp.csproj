@@ -61,7 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Foundation\Extensions\AssetBuildBundle.cs" />
     <Compile Include="Assets\Foundation\Extensions\DictionaryExtension.cs" />
     <Compile Include="Assets\Foundation\Extensions\TransformExtension.cs" />
     <Compile Include="Assets\Foundation\GameRoot.cs" />

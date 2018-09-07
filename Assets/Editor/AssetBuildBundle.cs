@@ -59,7 +59,7 @@ public class AssetBuildBundle : Editor {
     static void CreateSceneALL()
     {
         //清空一下缓存
-        Caching.ClearCache();
+       // Caching.ClearCache();
        // string Path = Application.dataPath + "/MyScene.unity3d";
        // string[] levels = { "Assets/Scenes/LoadingScenes.unity" };
         //打包场景

@@ -2,14 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-
-/*
- *	
- *  
- *
- *	by Xuanyi
- *
- */
+using UnityEngine.SceneManagement; 
 
 namespace MoleMole
 {
@@ -61,7 +54,8 @@ namespace MoleMole
         public void GameStartCallBack()
         {
             LoadingScreen.GlobLoadScenes.loadName = "StartGame";
-            Application.LoadLevel("LoadingScenes");
+            SceneManager.LoadScene("LoadingScenes");
+            //Application.LoadLevelAdditiveAsync("LoadingScenes");
         }
         public void GameExitCallBack()
         {

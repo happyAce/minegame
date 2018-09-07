@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class LoadingScreen : MonoBehaviour {
 
     public class GlobLoadScenes
@@ -10,16 +10,10 @@ public class LoadingScreen : MonoBehaviour {
         public static string loadName;
 
     }
-   
-    private float fps = 10.0f;
-    private float time;
-    //异步对象
-    AsyncOperation async;
     string secenes_path;
-    int progress = 0;
     private void Awake()
     {
-        secenes_path = Application.dataPath + "/"+ GlobLoadScenes.loadName+".unity3d";
+        secenes_path = "file://" + Application.dataPath + "/"+ GlobLoadScenes.loadName+".unity3d";
     }
     void Start()
     {
@@ -29,28 +23,31 @@ public class LoadingScreen : MonoBehaviour {
 
     IEnumerator loadScene()
     {
-        WWW www = WWW.LoadFromCacheOrDownload(secenes_path, 1);
-       // WWW www = new WWW(secenes_path);
+        //WWW www = WWW.LoadFromCacheOrDownload(secenes_path, 1);
+        WWW www = new WWW(secenes_path);
         yield return www;
 
-        AssetBundle bundle = www.assetBundle;
-        Instantiate(bundle.mainAsset);
-        bundle.Unload(false);
-
-        //yield return new WaitForSeconds(3f);
-        // Application.LoadLevelAsync(GlobLoadScenes.loadName);
-        // yield return async;
+        if (www.error == null)
+        {
+            AssetBundle ab = www.assetBundle; //将场景通过AssetBundle方式加载到内存中
+            //异步对象
+            AsyncOperation asy = SceneManager.LoadSceneAsync(GlobLoadScenes.loadName); //sceneName不能加后缀,只是场景名称
+            //AsyncOperation asy = Application.LoadLevelAdditiveAsync(GlobLoadScenes.loadName);
+            yield return asy;
+            ab.Unload(false);
+        }
+        else
+        {
+            Debug.LogError(www.error);
+        }
     }
-
     void OnGUI()
     {
-        DrawTitle();
+     
     }
     void Update()
     {
+
     }
-    void DrawTitle()
-    {
-      
-    }
+  
 }
