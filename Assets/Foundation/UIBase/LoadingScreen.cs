@@ -9,11 +9,12 @@ public class LoadingScreen : MonoBehaviour {
         //在这里记录当前切换场景的名称
         public static string loadName;
         public static string beforeName;
+      
     }
     string secenes_path;
     private void Awake()
     {
-        secenes_path = "file://" + Application.dataPath + "/"+ GlobLoadScenes.loadName+".unity3d";
+        secenes_path = "file://" + Application.dataPath + "/../WebAssets/" + "Scenes" + "/"+ GlobLoadScenes.loadName+".unity3d";
     }
     void Start()
     {

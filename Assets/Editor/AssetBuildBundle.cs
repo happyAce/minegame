@@ -17,7 +17,7 @@ public class AssetBuildBundle : Editor {
             //本地测试：建议最后将Assetbundle放在StreamingAssets文件夹下，如果没有就创建一个，因为移动平台下只能读取这个路径
             //StreamingAssets是只读路径，不能写入
             //服务器下载：就不需要放在这里，服务器上客户端用www类进行下载。
-            string targetpath = Application.dataPath + "/../WebAssets" + "/../StreamingAssets/" + o.name + ".aseetbundle";
+            string targetpath = Application.dataPath + "/../WebAssets" + "/StreamingAssets/" + o.name + ".aseetbundle";
             string dpath = Application.dataPath + "/../WebAssets" + "/StreamingAssets";
 
             if (!Directory.Exists(dpath))
@@ -74,7 +74,7 @@ public class AssetBuildBundle : Editor {
     static void CreateSceneALL()
     {
         //清空一下缓存
-       // Caching.ClearCache();
+        Caching.ClearCache();
        // string Path = Application.dataPath + "/MyScene.unity3d";
        // string[] levels = { "Assets/Scenes/LoadingScenes.unity" };
         //打包场景
