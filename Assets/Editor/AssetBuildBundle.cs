@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.IO;
+
 
 public class AssetBuildBundle : Editor {
 
@@ -15,7 +17,14 @@ public class AssetBuildBundle : Editor {
             //本地测试：建议最后将Assetbundle放在StreamingAssets文件夹下，如果没有就创建一个，因为移动平台下只能读取这个路径
             //StreamingAssets是只读路径，不能写入
             //服务器下载：就不需要放在这里，服务器上客户端用www类进行下载。
-            string targetpath = Application.dataPath + "/StreamingAssets/" + o.name + ".aseetbundle";
+            string targetpath = Application.dataPath + "/../WebAssets" + "/../StreamingAssets/" + o.name + ".aseetbundle";
+            string dpath = Application.dataPath + "/../WebAssets" + "/StreamingAssets";
+
+            if (!Directory.Exists(dpath))
+            {
+                DirectoryInfo dinfo = Directory.CreateDirectory(dpath);
+
+            }
             if (BuildPipeline.BuildAssetBundle(o, null, targetpath, BuildAssetBundleOptions.CollectDependencies,BuildTarget.StandaloneWindows))
             {
                 Debug.Log(o.name + "资源打包成功");
@@ -34,8 +43,14 @@ public class AssetBuildBundle : Editor {
         Caching.ClearCache();
 
 
-        string Path = Application.dataPath + "/StreamingAssets/ALL.assetbundle";
+        string Path = Application.dataPath + "/../WebAssets" + "/StreamingAssets/ALL.assetbundle";
+        string dpath = Application.dataPath + "/../WebAssets" + "/StreamingAssets";
 
+        if (!Directory.Exists(dpath))
+        {
+            DirectoryInfo dinfo = Directory.CreateDirectory(dpath);
+
+        }
 
         Object[] SelectedAsset = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);
 
@@ -71,7 +86,14 @@ public class AssetBuildBundle : Editor {
             //本地测试：建议最后将Assetbundle放在StreamingAssets文件夹下，如果没有就创建一个，因为移动平台下只能读取这个路径
             //StreamingAssets是只读路径，不能写入
             //服务器下载：就不需要放在这里，服务器上客户端用www类进行下载。
-            string targetpath = Application.dataPath + "/"+ o.name+".unity3d";
+            string targetpath = Application.dataPath + "/../WebAssets" +"/Scenes/" + o.name+".unity3d";
+            string dpath = Application.dataPath + "/../WebAssets" + "/Scenes";
+            
+            if (!Directory.Exists(dpath))
+            {
+                DirectoryInfo dinfo = Directory.CreateDirectory(dpath);
+                    
+            }
             string[] levels = { "Assets/Scenes/"+ o.name + ".unity" };
             if (BuildPipeline.BuildPlayer(levels, targetpath, BuildTarget.StandaloneWindows, BuildOptions.BuildAdditionalStreamedScenes))
             {

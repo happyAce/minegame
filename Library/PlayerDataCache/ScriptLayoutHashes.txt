@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-D:/Unity-UI-Framework-master/Assets/LoadingScenes.unity3d
+D:/Unity-UI-Framework-master/Assets/../WebAssets/Scenes/LoadingScenes.unity3d
 SceneListBegin?
 Assets/Scenes/LoadingScenes.unity
 SceneListEnd?
