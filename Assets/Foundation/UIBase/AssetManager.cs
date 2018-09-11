@@ -6,16 +6,27 @@ namespace MoleMole
 {
     public class AssetManager : MonoBehaviour
     {
-
+        // Hashtable AssetsNotCached = new Hashtable();
+        private static AssetManager am;
         public static Dictionary<string, Object> AseetFamily = new Dictionary<string, Object>();
-
+        void Awake()
+        {
+            am = this;
+        }
+        public static AssetManager GetInstance()
+        {
+            return am;
+        }
+    
         public AssetBundle GetAsset(string name)
         {
+
             return !AseetFamily.ContainsKey(name) ? null : AseetFamily[name] as AssetBundle;
         }
         public void startloadAsset(string name)
         {
-            StartCoroutine(load_sub(name));
+            if(!AseetFamily.ContainsKey(name) || AseetFamily[name] == null)
+                StartCoroutine(load_sub(name));
         }
         IEnumerator load_sub(string name)
         {

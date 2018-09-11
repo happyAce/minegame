@@ -12,12 +12,11 @@ using System.Collections.Generic;
 
 namespace MoleMole
 {
-    public class UIManager
+    public class UIManager: MonoBehaviour
     {
         public Dictionary<UIType, GameObject> _UIDict = new Dictionary<UIType,GameObject>();
 
         private Transform _canvas;
-        AssetManager am;
         private UIManager()
         {
             _canvas = GameObject.Find("Canvas").transform;
@@ -31,16 +30,23 @@ namespace MoleMole
         {
             if (_UIDict.ContainsKey(uiType) == false || _UIDict[uiType] == null)
             {
-                am.startloadAsset(uiType.Path);
+                AssetManager.GetInstance().startloadAsset(uiType.Path);
                 //GameObject go = GameObject.Instantiate(Resources.Load<GameObject>(uiType.Path)) as GameObject;
-                AssetBundle bundle = am.GetAsset(uiType.Name);
+                AssetBundle bundle = AssetManager.GetInstance().GetAsset(uiType.Name);
+                StartCoroutine(waitGameObject);
                 GameObject go = GameObject.Instantiate(bundle.LoadAsset(uiType.Name)) as GameObject;
+               
                 go.transform.SetParent(_canvas, false);
                 go.name = uiType.Name;
                 _UIDict.AddOrReplace(uiType, go);
                 return go;
             }
             return _UIDict[uiType];
+        }
+        private IEnumerator waitGameObject(Object o)
+        {
+            yield return GameObject.Instantiate(o) as GameObject;
+
         }
         public void DestroySingleUI(UIType uiType)
         {
