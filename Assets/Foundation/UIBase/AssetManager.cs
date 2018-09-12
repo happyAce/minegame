@@ -11,10 +11,18 @@ namespace MoleMole
         public static Dictionary<string, Object> AseetFamily = new Dictionary<string, Object>();
         public delegate void LoadDelegate();
         public static LoadDelegate LoadCallBack;
-        public static bool Loading = false;
+        //public static bool Loading = false;
         void Awake()
         {
-            am = this;
+            if (am != null)
+            {
+                return;
+            }
+            else
+            {
+                am = this;
+                DontDestroyOnLoad(gameObject);
+            }
         }
         public static AssetManager GetInstance()
         {
@@ -30,9 +38,7 @@ namespace MoleMole
         {
             if (!AseetFamily.ContainsKey(name) || AseetFamily[name] == null)
             {
-                int a = 0;
-                StartCoroutine(load_sub(name));
-                
+                StartCoroutine(load_sub(name));   
             }
             else
             {
