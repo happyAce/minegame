@@ -9,6 +9,9 @@ namespace MoleMole
         // Hashtable AssetsNotCached = new Hashtable();
         private static AssetManager am;
         public static Dictionary<string, Object> AseetFamily = new Dictionary<string, Object>();
+        public delegate void LoadDelegate();
+        public static LoadDelegate LoadCallBack;
+        public static bool Loading = false;
         void Awake()
         {
             am = this;
@@ -17,16 +20,28 @@ namespace MoleMole
         {
             return am;
         }
-    
+
         public AssetBundle GetAsset(string name)
         {
-
             return !AseetFamily.ContainsKey(name) ? null : AseetFamily[name] as AssetBundle;
         }
+
         public void startloadAsset(string name)
         {
-            if(!AseetFamily.ContainsKey(name) || AseetFamily[name] == null)
+            if (!AseetFamily.ContainsKey(name) || AseetFamily[name] == null)
+            {
+                int a = 0;
                 StartCoroutine(load_sub(name));
+                
+            }
+            else
+            {
+                if (LoadCallBack != null)
+                {
+                    LoadCallBack();
+                    LoadCallBack = null;
+                }
+            }
         }
         IEnumerator load_sub(string name)
         {
@@ -56,11 +71,16 @@ namespace MoleMole
             if (www.error == null)
             {
                 AssetBundle ab = www.assetBundle;
-                if (!AseetFamily.ContainsKey(assetname))
+                if (!AseetFamily.ContainsKey(name))
                 {
-                    AseetFamily.Add(assetname, ab);
+                    AseetFamily.Add(name, ab);
                 }
-                ab.Unload(false);
+                if (LoadCallBack != null)
+                {
+                    LoadCallBack();
+                    LoadCallBack = null;
+                }
+                //ab.Unload(false);
             }
             else
             {
