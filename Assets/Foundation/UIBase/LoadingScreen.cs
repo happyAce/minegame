@@ -31,6 +31,7 @@ namespace MoleMole
         }
         IEnumerator loading()
         {
+            Singleton<ContextManager>.Instance.Clear();
             AsyncOperation asy = SceneManager.LoadSceneAsync(GlobLoadScenes.loadName);
             yield return asy;
         }

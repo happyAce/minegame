@@ -55,7 +55,6 @@ namespace MoleMole
         {
             LoadingScreen.GlobLoadScenes.loadName = "StartGame";
             SceneManager.LoadScene("LoadingScenes");
-            //Application.LoadLevelAdditiveAsync("LoadingScenes");
         }
         public void GameExitCallBack()
         {

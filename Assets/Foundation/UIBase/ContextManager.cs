@@ -18,7 +18,7 @@ namespace MoleMole
 
         private ContextManager()
         {
-            Push(new MainMenuContext());
+           
         }
         
         public BaseContext nextContext;
@@ -95,6 +95,11 @@ namespace MoleMole
                 return _contextStack.Peek();
             }
             return null;
+        }
+        public void Clear()
+        {
+            if(_contextStack.Count != 0 )
+                _contextStack.Clear();
         }
     }
 }
