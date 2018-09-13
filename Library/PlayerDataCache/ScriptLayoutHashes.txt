@@ -2,6 +2,7 @@ WindowsStandalone
 PlayerPath?
 F:/minegame/minegame.exe
 SceneListBegin?
+Assets/Scenes/LoginStart.unity
 Assets/Scenes/LoadingScenes.unity
 SceneListEnd?
 6a33af6ceb1c60d8f89b2aa6507df7c4 Assembly-CSharp.dll:MoleMole.NextMenuView

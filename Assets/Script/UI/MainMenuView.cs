@@ -53,6 +53,12 @@ namespace MoleMole
         }
         public void GameStartCallBack()
         {
+            string path = "Scenes" + "/" + "LoadingScenes";
+            AssetManager.LoadCallBack += substartcallback;
+            AssetManager.GetInstance().startloadAsset(path);
+        }
+        void substartcallback()
+        {
             LoadingScreen.GlobLoadScenes.loadName = "StartGame";
             SceneManager.LoadScene("LoadingScenes");
         }
