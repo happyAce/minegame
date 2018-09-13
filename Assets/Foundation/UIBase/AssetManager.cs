@@ -11,6 +11,7 @@ namespace MoleMole
         public static Dictionary<string, Object> AseetFamily = new Dictionary<string, Object>();
         public delegate void LoadDelegate();
         public static LoadDelegate LoadCallBack;
+        const int Version = 1;
         //public static bool Loading = false;
         void Awake()
         {
@@ -72,7 +73,8 @@ namespace MoleMole
 
             }
             string path = "file://" + Application.dataPath + "/../WebAssets/" + filename + "/" + assetname + suffix;
-            WWW www = new WWW(path);
+            //WWW www = new WWW(path);
+            WWW www = WWW.LoadFromCacheOrDownload(path, Version);
             yield return www;
             if (www.error == null)
             {
