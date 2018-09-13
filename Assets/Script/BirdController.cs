@@ -27,11 +27,14 @@ public class BirdController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        NotificationCenter.GetInstance().PostNotification("GameOver");
-        Singleton<ContextManager>.Instance.Push(new RestartContext());
- 
-        //this.enabled = false;
+        if (this.enabled)
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            NotificationCenter.GetInstance().PostNotification("GameOver");
+            Singleton<ContextManager>.Instance.Push(new RestartContext());
+        }
+        this.enabled = false;
+        
     }
 
 }

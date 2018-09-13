@@ -13,7 +13,6 @@ namespace MoleMole
     }
     public class RestartView : AnimateView
     {
-
         public override void OnEnter(BaseContext context)
         {
             base.OnEnter(context);

@@ -1,12 +1,13 @@
 WindowsStandalone
 PlayerPath?
-D:/Unity-UI-Framework-master/Assets/../WebAssets/Scenes/LoadingScenes.unity3d
+F:/unity3d/myclient/minegame/Assets/../WebAssets/Scenes/LoginStart.unity3d
 SceneListBegin?
-Assets/Scenes/LoadingScenes.unity
+Assets/Scenes/LoginStart.unity
 SceneListEnd?
-0b0399c4b7b49c440fa718ace4ac585a UnityEngine.UI.dll:UnityEngine.UI.CanvasScaler
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:MoleMole.GameRoot
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:MoleMole.AssetManager
 eb1b98eae58d1c3cddd6ef4553520642 UnityEngine.UI.dll:UnityEngine.EventSystems.EventSystem
-a2313de45ed47f1a12bb2d80e8b2de54 UnityEngine.UI.dll:UnityEngine.UI.GraphicRaycaster
 a4ef7c59ab7201ab109de36901ceb49b UnityEngine.UI.dll:UnityEngine.EventSystems.StandaloneInputModule
-769e576fcd3f60fa29a2cccb9e8127d9 UnityEngine.UI.dll:UnityEngine.UI.Text
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LoadingScreen
+a2313de45ed47f1a12bb2d80e8b2de54 UnityEngine.UI.dll:UnityEngine.UI.GraphicRaycaster
+0b0399c4b7b49c440fa718ace4ac585a UnityEngine.UI.dll:UnityEngine.UI.CanvasScaler
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.OnlyCanvas

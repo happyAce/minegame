@@ -32,6 +32,8 @@ namespace MoleMole
                 //GameObject go = GameObject.Instantiate(Resources.Load<GameObject>(uiType.Path)) as GameObject;
                 AssetBundle bundle = AssetManager.GetInstance().GetAsset(uiType.Path);
                 GameObject go = GameObject.Instantiate(bundle.LoadAsset(uiType.Name)) as GameObject;   
+                if(_canvas == null)
+                    _canvas = GameObject.Find("Canvas").transform;
                 go.transform.SetParent(_canvas, false);
                 go.name = uiType.Name;
                 _UIDict.AddOrReplace(uiType, go);
