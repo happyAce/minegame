@@ -7,9 +7,24 @@ using System.IO;
 
 public class AssetBuildBundle : Editor {
 
+    static BuildTarget get_Platform()
+    {
+        BuildTarget _Platform = BuildTarget.StandaloneWindows64;
+#if UNITY_EDITOR
+        _Platform = BuildTarget.StandaloneWindows64;
+#elif UNITY_IPHONE
+        _Platform = BuildTarget.iOS;
+#elif UNITY_ANDROID
+        _Platform = BuildTarget.Android;
+#elif UNITY_STANDALONE_WIN
+        _Platform = BuildTarget.StandaloneWindows;
+#endif
+        return _Platform;
+    }
     [MenuItem("Assets/Tools/Create AssetBundles Main")]
     static void CreatAssetBundlesMain()
     {
+
         //获取当前在project视窗中选择的资源文件
         Object[] SelectedAsset = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);
         foreach(Object o in SelectedAsset)
@@ -25,7 +40,7 @@ public class AssetBuildBundle : Editor {
                 DirectoryInfo dinfo = Directory.CreateDirectory(dpath);
 
             }
-            if (BuildPipeline.BuildAssetBundle(o, null, targetpath, BuildAssetBundleOptions.CollectDependencies,BuildTarget.StandaloneWindows))
+            if (BuildPipeline.BuildAssetBundle(o, null, targetpath, BuildAssetBundleOptions.CollectDependencies, get_Platform()))
             {
                 Debug.Log(o.name + "资源打包成功");
             }
@@ -60,7 +75,7 @@ public class AssetBuildBundle : Editor {
         }
 
         //这里注意第二个参数就行
-        if (BuildPipeline.BuildAssetBundle(null, SelectedAsset, Path, BuildAssetBundleOptions.CollectDependencies, BuildTarget.StandaloneWindows))
+        if (BuildPipeline.BuildAssetBundle(null, SelectedAsset, Path, BuildAssetBundleOptions.CollectDependencies, get_Platform()))
         {
             AssetDatabase.Refresh();
         }
@@ -95,7 +110,7 @@ public class AssetBuildBundle : Editor {
                     
             }
             string[] levels = { "Assets/Scenes/"+ o.name + ".unity" };
-            if (BuildPipeline.BuildPlayer(levels, targetpath, BuildTarget.StandaloneWindows, BuildOptions.BuildAdditionalStreamedScenes))
+            if (BuildPipeline.BuildPlayer(levels, targetpath, get_Platform(), BuildOptions.BuildAdditionalStreamedScenes))
             {
 
                 Debug.Log("build场景成功:"+o.name+".unity3d");
