@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-F:/unity3d/myclient/minegame/Assets/../WebAssets/Scenes/LoadingScenes.unity3d
+F:/unity3d/myclient/minegame/Assets/StreamingAssets//Scenes/LoadingScenes.unity3d
 SceneListBegin?
 Assets/Scenes/LoadingScenes.unity
 SceneListEnd?

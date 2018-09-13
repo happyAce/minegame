@@ -24,7 +24,7 @@ public class AssetBuildBundle : Editor {
     [MenuItem("Assets/Tools/Create AssetBundles Main")]
     static void CreatAssetBundlesMain()
     {
-
+        Caching.ClearCache();
         //获取当前在project视窗中选择的资源文件
         Object[] SelectedAsset = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);
         foreach(Object o in SelectedAsset)
@@ -32,8 +32,8 @@ public class AssetBuildBundle : Editor {
             //本地测试：建议最后将Assetbundle放在StreamingAssets文件夹下，如果没有就创建一个，因为移动平台下只能读取这个路径
             //StreamingAssets是只读路径，不能写入
             //服务器下载：就不需要放在这里，服务器上客户端用www类进行下载。
-            string targetpath = Application.dataPath + "/../WebAssets" + "/StreamingAssets/" + o.name + ".aseetbundle";
-            string dpath = Application.dataPath + "/../WebAssets" + "/StreamingAssets";
+            string targetpath = Application.dataPath  + "/StreamingAssets" + "/prefab/" + o.name + ".aseetbundle";
+            string dpath = Application.dataPath  + "/StreamingAssets" + "/prefab";
 
             if (!Directory.Exists(dpath))
             {
@@ -58,8 +58,8 @@ public class AssetBuildBundle : Editor {
         Caching.ClearCache();
 
 
-        string Path = Application.dataPath + "/../WebAssets" + "/StreamingAssets/ALL.assetbundle";
-        string dpath = Application.dataPath + "/../WebAssets" + "/StreamingAssets";
+        string Path = Application.dataPath + "/StreamingAssets"+"/prefab"+"/ALL.assetbundle";
+        string dpath = Application.dataPath + "/StreamingAssets" + "/prefab";
 
         if (!Directory.Exists(dpath))
         {
@@ -101,8 +101,8 @@ public class AssetBuildBundle : Editor {
             //本地测试：建议最后将Assetbundle放在StreamingAssets文件夹下，如果没有就创建一个，因为移动平台下只能读取这个路径
             //StreamingAssets是只读路径，不能写入
             //服务器下载：就不需要放在这里，服务器上客户端用www类进行下载。
-            string targetpath = Application.dataPath + "/../WebAssets" +"/Scenes/" + o.name+".unity3d";
-            string dpath = Application.dataPath + "/../WebAssets" + "/Scenes";
+            string targetpath = Application.dataPath + "/StreamingAssets/" + "/Scenes/" + o.name+".unity3d";
+            string dpath = Application.dataPath + "/StreamingAssets/" + "/Scenes";
             
             if (!Directory.Exists(dpath))
             {

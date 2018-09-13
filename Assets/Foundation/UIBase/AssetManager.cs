@@ -61,7 +61,7 @@ namespace MoleMole
                 case "View":
                     {
                         suffix = ".aseetbundle";
-                        filename = "StreamingAssets";
+                        filename = "prefab";
                     }
                     break;
                 case "Scenes":
@@ -72,7 +72,7 @@ namespace MoleMole
                     break;
 
             }
-            string path = "file://" + Application.dataPath + "/../WebAssets/" + filename + "/" + assetname + suffix;
+            string path = "file://" + Application.dataPath + "/" + "StreamingAssets" + "/" + filename + "/" + assetname + suffix;
             //WWW www = new WWW(path);
             WWW www = WWW.LoadFromCacheOrDownload(path, Version);
             yield return www;
