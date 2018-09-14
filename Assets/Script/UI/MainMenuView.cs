@@ -21,7 +21,7 @@ namespace MoleMole
         private Button _buttonHighScore;
         [SerializeField]
         private Button _buttonOption;
-
+        
         public override void OnEnter(BaseContext context)
         {
             base.OnEnter(context);

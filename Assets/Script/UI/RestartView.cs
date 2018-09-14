@@ -16,7 +16,7 @@ namespace MoleMole
         public override void Start()
         {
             base.Start();
-            //GetComponent<Observer>().AddEventHandler("GameOver", OnGameOver);
+            
         }
         void OnGameOver(object sender,System.EventArgs e)
         {
