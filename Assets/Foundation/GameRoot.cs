@@ -20,6 +20,7 @@ namespace MoleMole
             Singleton<ContextManager>.Create();
             Singleton<Localization>.Create();
             Singleton<ContextManager>.Instance.Push(new MainMenuContext());
+            DontDestroyOnLoad(this);
         }
 
 	}

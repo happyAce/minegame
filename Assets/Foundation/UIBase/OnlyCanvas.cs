@@ -9,7 +9,9 @@ public class OnlyCanvas : MonoBehaviour {
     void Awake()
     {
         //DontDestroyOnLoad(gameObject);
-        //_canvas = GameObject.Find("Canvas").transform;
+        //Canvas _canvas = gameObject.GetComponent("Canvas")as Canvas;
+        //_canvas.renderMode = RenderMode.ScreenSpaceCamera;
+       
         //_canvas.SetParent = 
         
     }

@@ -4,12 +4,12 @@ D:/Unity-UI-Framework-master/Assets/StreamingAssets//Scenes/StartGame.unity3d
 SceneListBegin?
 Assets/Scenes/StartGame.unity
 SceneListEnd?
+eb1b98eae58d1c3cddd6ef4553520642 UnityEngine.UI.dll:UnityEngine.EventSystems.EventSystem
+a4ef7c59ab7201ab109de36901ceb49b UnityEngine.UI.dll:UnityEngine.EventSystems.StandaloneInputModule
+0b0399c4b7b49c440fa718ace4ac585a UnityEngine.UI.dll:UnityEngine.UI.CanvasScaler
+a2313de45ed47f1a12bb2d80e8b2de54 UnityEngine.UI.dll:UnityEngine.UI.GraphicRaycaster
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TubeController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Observer
 cb2be25484b0ab15b89f9a8707eae323 Assembly-CSharp.dll:.TubeFactory
 2f90e15c666dfbdbf2d174d48d0499b9 Assembly-CSharp.dll:.ScoreFactory
 dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.BirdController
-a2313de45ed47f1a12bb2d80e8b2de54 UnityEngine.UI.dll:UnityEngine.UI.GraphicRaycaster
-0b0399c4b7b49c440fa718ace4ac585a UnityEngine.UI.dll:UnityEngine.UI.CanvasScaler
-eb1b98eae58d1c3cddd6ef4553520642 UnityEngine.UI.dll:UnityEngine.EventSystems.EventSystem
-a4ef7c59ab7201ab109de36901ceb49b UnityEngine.UI.dll:UnityEngine.EventSystems.StandaloneInputModule

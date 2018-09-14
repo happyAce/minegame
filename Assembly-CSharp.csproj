@@ -74,6 +74,7 @@
     <Compile Include="Assets\Foundation\UIBase\ContextManager.cs" />
     <Compile Include="Assets\Foundation\UIBase\LoadingScreen.cs" />
     <Compile Include="Assets\Foundation\UIBase\OnlyCanvas.cs" />
+    <Compile Include="Assets\Foundation\UIBase\RootUI.cs" />
     <Compile Include="Assets\Foundation\UIBase\UIManager.cs" />
     <Compile Include="Assets\Foundation\UIBase\UIType.cs" />
     <Compile Include="Assets\Foundation\UIComponent\GridScroller.cs" />

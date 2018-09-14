@@ -15,8 +15,8 @@ namespace MoleMole
     public class UIManager
     {
         public Dictionary<UIType, GameObject> _UIDict = new Dictionary<UIType,GameObject>();
-
         private Transform _canvas;
+
         private UIManager()
         {
             _canvas = GameObject.Find("Canvas").transform;

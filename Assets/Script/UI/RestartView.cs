@@ -13,6 +13,15 @@ namespace MoleMole
     }
     public class RestartView : AnimateView
     {
+        public override void Start()
+        {
+            base.Start();
+            //GetComponent<Observer>().AddEventHandler("GameOver", OnGameOver);
+        }
+        void OnGameOver(object sender,System.EventArgs e)
+        {
+            Singleton<ContextManager>.Instance.Push(new RestartContext());
+        }
         public override void OnEnter(BaseContext context)
         {
             base.OnEnter(context);

@@ -12,9 +12,12 @@ using System.Collections.Generic;
 
 namespace MoleMole
 {
-	public abstract class BaseView : MonoBehaviour
+	public class BaseView : MonoBehaviour
     {
+        public virtual void Start()
+        {
 
+        }
         public virtual void OnEnter(BaseContext context)
         {
 
